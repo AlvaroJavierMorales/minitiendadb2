@@ -1,0 +1,67 @@
+-- -----------------------------------------------------------
+-- CATEGORIAS -----------------------------------------------------------
+-- -----------------------------------------------------------
+-- Isertar *****************************************************
+DELIMITER //
+create  procedure procInsertCategorias(In v_description varchar(45))
+begin
+insert into tbl_categorias(cat_descripcion) values(v_description);
+end//
+DELIMITER  ; 
+-- Actualizar *****************************************************
+DELIMITER //
+create procedure procUpdateCategorias(IN v_id INT, IN v_description varchar(45))
+begin
+update tbl_categorias
+set cat_descripcion = v_description
+where cat_id = v_id;
+end//
+DELIMITER  ; 
+-- Mostrar  *****************************************************
+DELIMITER //
+create procedure procSelectCategorias()
+begin
+select cat_id, cat_descripcion from tbl_categorias; 
+end//
+DELIMITER  ; 
+-- Eliminar *****************************************************
+DELIMITER //
+create procedure procDeleteCategorias(IN v_id INT)
+begin 
+delete from tbl_categorias where cat_id = v_id;
+end//
+DELIMITER  ; 
+-- -----------------------------------------------------------
+-- PROVEEDORES -----------------------------------------------------------
+-- -----------------------------------------------------------
+-- Insertar *****************************************************
+DELIMITER //
+create procedure procInsertProveedores (In v_nit varchar (45), v_nombre varchar (45))
+begin 
+insert into tbl_proveedores(prov_nit, prov_nombre) values(v_nit, v_nombre);
+end//
+DELIMITER ;
+-- MOSTRAR *****************************************************
+DELIMITER //
+create procedure procSelectProveedores()
+begin
+select prov_id, prov_nit, prov_nombre from tbl_proveedores;
+end//
+DELIMITER ;
+-- ACTUALIZAR *****************************************************
+DELIMITER //
+ create procedure procUpdateProveedores(IN v_id INT, IN v_nit varchar(45), IN v_nombre varchar(45))
+ begin
+ update tbl_proveedores 
+ set prov_nit = v_nit,
+ prov_nombre = v_nombre
+ where prov_id = v_id;
+ end// 
+DELIMITER ;
+-- ELIMINAR *****************************************************
+DELIMITER //
+create procedure procDeleteProveedores(IN v_id INT)
+begin
+delete from tbl_proveedores where prov_id = v_id;
+end// 
+DELIMITER ;
